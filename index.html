@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es" data-vista="esencial">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dra. Ing. Paola Beatriz Torres — Simulación Computacional &amp; Machine Learning</title>
+  <meta name="description" content="Dra. Ing. Paola Beatriz Torres. Doctora en Ingeniería (UTN), investigadora posdoctoral CONICET. Simulación computacional de biomoléculas, modelado de grano grueso y aprendizaje automático. Publicaciones, proyectos de IA, cursos y colaboraciones.">
+  <meta name="author" content="Paola Beatriz Torres">
+  <meta name="theme-color" content="#131211">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Dra. Ing. Paola Beatriz Torres — Simulación &amp; Machine Learning">
+  <meta property="og:description" content="Investigadora posdoctoral CONICET. Simulación computacional de biomoléculas, modelado de grano grueso y aprendizaje automático.">
+  <meta property="og:locale" content="es_AR">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Aplica tema, idioma y vista antes de pintar, para evitar parpadeos. -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("pt-theme");
+        if (!t) t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", t);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute("content", t === "light" ? "#faf7f2" : "#131211");
+
+        var q = new URLSearchParams(location.search);
+
+        var p = q.get("lang");
+        var l = p || localStorage.getItem("pt-lang") ||
+                ((navigator.language || "es").slice(0, 2) === "en" ? "en" : "es");
+        document.documentElement.lang = (l === "en" ? "en" : "es");
+
+        /* La vista esencial es la de entrada: muestra lo que necesita quien
+           llega a preguntar por proyectos actuales o líneas de investigación.
+           Un enlace directo a una sección del detalle abre la vista completa.
+           El <html> ya viene con data-vista="esencial", así que si esto falla
+           no hay parpadeo: sólo no se recupera la preferencia guardada.
+           app.js repite la decisión leyendo las clases .solo-completa del DOM,
+           que son la fuente de verdad; esta lista es sólo para no parpadear. */
+        var v = q.get("vista") || localStorage.getItem("pt-vista") || "esencial";
+        var h = (location.hash || "").slice(1);
+        if (h && ["trayectoria", "codigo", "cursos", "docencia"].indexOf(h) !== -1) v = "completa";
+        document.documentElement.setAttribute("data-vista", v === "completa" ? "completa" : "esencial");
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23f0a93c'/><text y='.9em' x='50%25' text-anchor='middle' font-size='58' font-family='system-ui,sans-serif' font-weight='700' fill='%232b1b03'>PT</text></svg>">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido" id="skipLink">Saltar al contenido</a>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#inicio">
+      <span class="nav__mark" aria-hidden="true">PT</span>
+      <span class="nav__brandtext" id="brandText"></span>
+    </a>
+
+    <nav class="nav__links" id="navLinks"></nav>
+
+    <div class="nav__actions">
+      <button class="langbtn viewbtn" id="viewToggle" type="button"></button>
+      <button class="langbtn" id="langToggle" type="button"></button>
+      <button class="iconbtn" id="themeToggle" type="button">
+        <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"/></svg>
+        <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg>
+      </button>
+      <button class="iconbtn nav__burger" id="navBurger" type="button" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+</header>
+
+<main id="contenido">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio">
+    <div class="hero__glow" aria-hidden="true"></div>
+
+    <!-- Motivo decorativo de fondo: modelo de grano grueso (proteína globular
+         + cadenas de polielectrolito + contornos de potencial). Ornamental. -->
+    <div class="hero__motivo" aria-hidden="true">
+      <svg viewBox="0 0 640 520" fill="none">
+        <g stroke="var(--accent)" stroke-linecap="round">
+          <ellipse class="motivo__contorno" cx="400" cy="260" rx="228" ry="196" stroke-width="1.6" opacity=".5"  stroke-dasharray="6 14"/>
+          <ellipse class="motivo__contorno" cx="400" cy="260" rx="176" ry="150" stroke-width="1.6" opacity=".75" stroke-dasharray="5 12"/>
+        </g>
+        <g stroke="var(--accent-2)" stroke-linecap="round">
+          <path d="M-30 372C86 436 190 296 300 372s224-72 400 -16" stroke-width="2.6" opacity=".45"/>
+          <path d="M-30 372C86 436 190 296 300 372s224-72 400 -16" stroke-width="15" stroke-dasharray="0.01 27"/>
+          <path d="M-30 138C92 46 208 178 320 96s232 52 380 -18" stroke-width="2.6" opacity=".45"/>
+          <path d="M-30 138C92 46 208 178 320 96s232 52 380 -18" stroke-width="15" stroke-dasharray="0.01 27"/>
+        </g>
+        <g class="motivo__nucleo" fill="var(--accent)">
+          <circle cx="479" cy="290" r="21"/><circle cx="451" cy="329" r="21"/>
+          <circle cx="400" cy="338" r="21"/><circle cx="349" cy="329" r="21"/>
+          <circle cx="321" cy="290" r="21"/><circle cx="321" cy="230" r="21"/>
+          <circle cx="349" cy="191" r="21"/><circle cx="400" cy="182" r="21"/>
+          <circle cx="451" cy="191" r="21"/><circle cx="479" cy="230" r="21"/>
+          <circle cx="442" cy="260" r="21"/><circle cx="421" cy="224" r="21"/>
+          <circle cx="379" cy="224" r="21"/><circle cx="358" cy="260" r="21"/>
+          <circle cx="379" cy="296" r="21"/><circle cx="421" cy="296" r="21"/>
+          <circle cx="400" cy="260" r="21"/>
+        </g>
+        <g stroke="var(--accent)" stroke-width="3" stroke-linecap="round" opacity=".55">
+          <path d="M150 250h22M161 239v22"/><path d="M576 226h22M587 215v22"/>
+          <path d="M228 64h22"/><path d="M540 452h22"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="wrap hero__grid">
+      <div class="hero__main">
+        <p class="eyebrow" id="heroEyebrow"></p>
+        <h1 class="hero__name" id="heroName"></h1>
+        <p class="hero__role" id="heroRole"></p>
+        <p class="hero__lede" id="heroLede"></p>
+        <div class="hero__cta" id="heroCta"></div>
+        <ul class="hero__perfiles" id="heroPerfiles"></ul>
+        <ul class="hero__stats" id="heroStats"></ul>
+      </div>
+      <aside class="hero__card" id="heroCard"></aside>
+    </div>
+  </section>
+
+  <!-- ============ PERFIL ============ -->
+  <section class="section" id="perfil">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">01</span><h2 data-t="perfil"></h2><p class="sec-sub" data-s="perfil"></p></div>
+      <div class="perfil">
+        <div class="perfil__text" id="perfilText"></div>
+        <div class="perfil__side">
+          <div class="panel"><h3 class="panel__title" data-t="areas"></h3><ul class="taglist" id="perfilAreas"></ul></div>
+          <div class="panel solo-completa"><h3 class="panel__title" data-t="idiomas"></h3><ul class="kvlist" id="perfilIdiomas"></ul></div>
+        </div>
+      </div>
+      <div class="skills solo-completa" id="skills"></div>
+    </div>
+  </section>
+
+  <!-- ============ ACTUALIDAD ============ -->
+  <section class="section section--alt" id="actualidad">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02</span><h2 data-t="actualidad"></h2><p class="sec-sub" data-s="actualidad"></p></div>
+      <div class="nowgrid" id="nowGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ TRAYECTORIA ============ -->
+  <section class="section solo-completa" id="trayectoria">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">03</span><h2 data-t="trayectoria"></h2><p class="sec-sub" data-s="trayectoria"></p></div>
+      <div class="tray">
+        <div class="tray__col">
+          <h3 class="tray__title" data-t="experiencia"></h3>
+          <ol class="timeline" id="tlExperiencia"></ol>
+        </div>
+        <div class="tray__col">
+          <h3 class="tray__title" data-t="formacion"></h3>
+          <ol class="timeline" id="tlFormacion"></ol>
+          <h3 class="tray__title tray__title--sp" data-t="becas"></h3>
+          <ul class="minilist" id="listBecas"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROYECTOS DE IA ============ -->
+  <section class="section section--alt" id="ia">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">04</span><h2 data-t="ia"></h2><p class="sec-sub" data-s="ia"></p></div>
+      <div class="filters solo-completa" id="iaFilters" role="group"></div>
+      <div class="iagrid" id="iaGrid"></div>
+      <p class="note solo-completa" id="iaNote"></p>
+    </div>
+  </section>
+
+  <!-- ============ PUBLICACIONES ============ -->
+  <section class="section" id="publicaciones">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">05</span><h2 data-t="publicaciones"></h2><p class="sec-sub" data-s="publicaciones"></p></div>
+      <div class="perfilesbar" id="pubPerfiles"></div>
+      <div class="filters solo-completa" id="pubFilters" role="group"></div>
+      <ol class="publist" id="pubList"></ol>
+      <div class="pubfoot" id="pubFoot"></div>
+    </div>
+  </section>
+
+  <!-- ============ CÓDIGO ============ -->
+  <section class="section section--alt solo-completa" id="codigo">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">06</span><h2 data-t="codigo"></h2><p class="sec-sub" data-s="codigo"></p></div>
+      <div class="repogrid" id="repoGrid"></div>
+      <p class="note" id="repoNote"></p>
+    </div>
+  </section>
+
+  <!-- ============ CURSOS ============ -->
+  <section class="section solo-completa" id="cursos">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">07</span><h2 data-t="cursos"></h2><p class="sec-sub" data-s="cursos"></p></div>
+      <div class="cursogrid" id="cursoGrid"></div>
+      <p class="note" id="cursoNota"></p>
+    </div>
+  </section>
+
+  <!-- ============ DOCENCIA ============ -->
+  <section class="section section--alt solo-completa" id="docencia">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">08</span><h2 data-t="docencia"></h2><p class="sec-sub" data-s="docencia"></p></div>
+      <div class="docgrid">
+        <div class="panel panel--lg"><h3 class="panel__title" data-t="catedras"></h3><ul class="minilist" id="listDocencia"></ul></div>
+        <div class="panel panel--lg"><h3 class="panel__title" data-t="becarios"></h3><ul class="minilist" id="listBecarios"></ul></div>
+        <div class="panel panel--lg"><h3 class="panel__title" data-t="evaluacion"></h3><ul class="minilist" id="listEval"></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COLABORACIONES ============ -->
+  <section class="section" id="colaborar">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">09</span><h2 data-t="colaborar"></h2><p class="sec-sub" data-s="colaborar"></p></div>
+      <p class="lead" id="buscoIntro"></p>
+      <div class="buscogrid" id="buscoGrid"></div>
+      <div class="buscocta" id="buscoCta"></div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="section section--alt" id="contacto">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">10</span><h2 data-t="contacto"></h2><p class="sec-sub" data-s="contacto"></p></div>
+      <div class="contact" id="contact"></div>
+    </div>
+  </section>
+
+  <!-- Puente hacia la vista completa; sólo aparece en la vista esencial. -->
+  <div class="vistamas solo-esencial" id="vistaMas"></div>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <p id="footLeft"></p>
+    <p id="footRight"></p>
+  </div>
+</footer>
+
+<noscript>
+  <div class="wrap" style="padding:2rem 0">
+    <p><strong>Esta página necesita JavaScript / This page requires JavaScript.</strong>
+    <a href="mailto:paotorres89@gmail.com">paotorres89@gmail.com</a> &middot;
+    <a href="https://orcid.org/0000-0001-9335-8367">ORCID</a> &middot;
+    <a href="https://github.com/paobtorres">GitHub</a> &middot;
+    <a href="https://www.linkedin.com/in/paolabtorres/">LinkedIn</a></p>
+  </div>
+</noscript>
+
+<script src="datos.js"></script>
+<script src="datos.en.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

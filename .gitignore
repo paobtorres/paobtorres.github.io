@@ -1,0 +1,18 @@
+# --- Datos sensibles: NO subir ---
+# El CV de CONICET trae DNI, CUIL, fecha de nacimiento y domicilio particular.
+# El repositorio de GitHub Pages es público: cualquier cosa que se commitee acá
+# queda en el historial aunque después se borre.
+CV-TorresPaola.pdf
+
+# Los otros dos CVs tampoco se publican: la página ya no ofrece descarga del CV,
+# así que ningún PDF necesita estar en el repo.
+CV_TorresPaola_Research.pdf
+CV_TorresPaola_2025.pdf
+
+# --- Ruido local ---
+.claude/
+.DS_Store
+Thumbs.db
+*~
+*.swp
+capturas/
