@@ -16,21 +16,6 @@
   var revealListo = false;
   var filtroIA = 0, filtroPub = 0;   // índices, para no perderlos al cambiar idioma
 
-  /* La vista esencial deja a la vista sólo lo que necesita quien llega a
-     preguntar por proyectos actuales o líneas de investigación. El resto del
-     sitio no desaparece: vive en la vista completa, a un clic. Las secciones
-     y bloques que sólo van en la completa se marcan con .solo-completa en el
-     HTML; lo que sólo va en la esencial, con .solo-esencial. Esas clases son
-     la única fuente de verdad: el menú, la numeración y el salto por ancla
-     las leen del DOM en vez de repetir la lista de secciones. */
-  var vista = "esencial";
-  function esEsencial() { return vista === "esencial"; }
-
-  function seVe(id) {
-    var s = document.getElementById(id);
-    return !esEsencial() || !s || !s.classList.contains("solo-completa");
-  }
-
   var el = function (id) { return document.getElementById(id); };
 
   /* Escapa texto plano. Los campos con etiquetas HTML son contenido propio
@@ -85,7 +70,7 @@
     el("brandText").textContent = D.meta.nombreCorto;
 
     el("navLinks").setAttribute("aria-label", u.nav.perfil + " …");
-    el("navLinks").innerHTML = Object.keys(u.nav).filter(seVe).map(function (k) {
+    el("navLinks").innerHTML = Object.keys(u.nav).map(function (k) {
       return '<a href="#' + k + '">' + esc(u.nav[k]) + "</a>";
     }).join("");
 
@@ -93,21 +78,6 @@
     lb.textContent = u.idiomaOtro;
     lb.setAttribute("aria-label", u.cambiarIdioma);
     lb.setAttribute("title", u.cambiarIdioma);
-
-    /* Conmutador de vista: dos segmentos siempre visibles, con el actual
-       marcado. Antes era un botón solo que mostraba el destino ("Ver todo"
-       estando en la vista simple), y se leía al revés: parecía la etiqueta de
-       dónde estabas y no adónde ibas. Mostrando las dos opciones no hay
-       ambigüedad posible. */
-    el("viewSwitch").setAttribute("aria-label", u.vista.grupo);
-    [["viewSimple", "esencial"], ["viewFull", "completa"]].forEach(function (par) {
-      var b = el(par[0]), activo = (vista === par[1]);
-      var esencial = par[1] === "esencial";
-      b.textContent = esencial ? u.vista.botonEsencial : u.vista.botonCompleta;
-      b.setAttribute("title", esencial ? u.vista.aEsencial : u.vista.aCompleta);
-      b.setAttribute("aria-label", esencial ? u.vista.aEsencial : u.vista.aCompleta);
-      b.setAttribute("aria-pressed", String(activo));
-    });
 
     el("themeToggle").setAttribute("aria-label", u.tema);
     el("themeToggle").setAttribute("title", u.tema);
@@ -117,11 +87,9 @@
       var k = n.dataset.t;
       n.textContent = (u.sec[k] && u.sec[k].t) || u.lbl[k] || "";
     });
-    /* Un par de secciones muestran menos en la vista esencial: si tienen
-       `sEsencial`, el subtítulo describe lo que se ve y no lo que hay. */
     Array.prototype.forEach.call(document.querySelectorAll("[data-s]"), function (n) {
       var s = u.sec[n.dataset.s] || {};
-      n.textContent = (esEsencial() && s.sEsencial) || s.s || "";
+      n.textContent = s.s || "";
     });
   }
 
@@ -165,10 +133,8 @@
   /* ==================================================== PERFIL */
   function renderPerfil() {
     var p = D.perfil;
-    /* Los dos primeros párrafos cuentan quién es y en qué trabaja; el resto
-       es contexto y queda para la vista completa. */
-    el("perfilText").innerHTML = p.parrafos.map(function (x, i) {
-      return "<p" + (i > 1 ? ' class="solo-completa"' : "") + ">" + x + "</p>";
+    el("perfilText").innerHTML = p.parrafos.map(function (x) {
+      return "<p>" + x + "</p>";
     }).join("");
     el("perfilAreas").innerHTML   = p.areas.map(function (a) { return "<li>" + esc(a) + "</li>"; }).join("");
     el("perfilIdiomas").innerHTML = p.idiomas.map(function (i) {
@@ -235,10 +201,7 @@
     function pinta(i) {
       filtroIA = i;
       var etiqueta = D.iaEstados[i];
-      /* En la vista esencial no hay filtros: se muestra lo que está en curso,
-         que es lo que responde «¿en qué está trabajando ahora?». */
       var lista = D.ia.filter(function (p) {
-        if (esEsencial()) return p.estado === D.iaEstados[1];
         return i === 0 || p.estado === etiqueta;
       });
       grid.innerHTML = lista.map(function (p) {
@@ -271,9 +234,8 @@
 
     function pinta(i) {
       filtroPub = i;
-      /* La vista esencial se queda con los artículos; la completa respeta el
-         filtro elegido. `pubTodas` es la única etiqueta que no filtra. */
-      var etiqueta = esEsencial() ? D.pubTipos[0] : D.pubTipos[i];
+      /* `pubTodas` es la única etiqueta que no filtra. */
+      var etiqueta = D.pubTipos[i];
       var items = D.publicaciones
         .filter(function (p) { return etiqueta === D.pubTodas || p.tipo === etiqueta; })
         .sort(function (a, b) { return b.anio - a.anio; });
@@ -302,13 +264,6 @@
 
     montarFiltros(el("pubFilters"), D.pubTipos, filtroPub, pinta, conteos);
     pinta(filtroPub);
-
-    var v = D.ui.vista;
-    el("pubFoot").innerHTML = esEsencial()
-      ? '<p class="note">' + esc(v.soloArticulos) + "</p>" +
-        '<button class="btn" type="button" data-ver="completa" data-ir="publicaciones">' +
-        esc(v.verTodas) + " (" + D.publicaciones.length + ")</button>"
-      : "";
   }
 
   /* ======================================================= REPOS */
@@ -397,67 +352,17 @@
       '<div class="contact__list">' + filas + "</div>";
   }
 
-  /* ======================================== VISTA ESENCIAL / COMPLETA */
-  function renderVistaMas() {
-    var v = D.ui.vista;
-    el("vistaMas").innerHTML =
-      '<div class="wrap vistamas__inner">' +
-      "<div><h3>" + esc(v.masTitulo) + "</h3><p>" + esc(v.masTexto) + "</p></div>" +
-      '<button class="btn btn--primary" type="button" data-ver="completa">' +
-      esc(v.masBoton) + "</button></div>";
-  }
-
-  /* Numera las secciones visibles y alterna el fondo. Se calcula acá y no se
-     deja fijo en el HTML porque la vista esencial esconde secciones del medio:
-     con números fijos quedarían huecos (01, 02, 04…) y dos fondos iguales
-     pegados uno al otro. */
+  /* Numera las secciones y alterna el fondo. Se calcula acá y no se deja fijo
+     en el HTML para no tener que renumerar a mano al agregar o sacar una. */
   function numerarSecciones() {
-    var visibles = Array.prototype.filter.call(
+    Array.prototype.forEach.call(
       document.querySelectorAll("main > section:not(.hero)"),
-      function (s) { return !esEsencial() || !s.classList.contains("solo-completa"); }
+      function (s, i) {
+        var n = s.querySelector(".sec-num");
+        if (n) n.textContent = (i < 9 ? "0" : "") + (i + 1);
+        s.classList.toggle("section--alt", i % 2 === 1);
+      }
     );
-    visibles.forEach(function (s, i) {
-      var n = s.querySelector(".sec-num");
-      if (n) n.textContent = (i < 9 ? "0" : "") + (i + 1);
-      s.classList.toggle("section--alt", i % 2 === 1);
-    });
-  }
-
-  function aplicarVista(nueva) {
-    vista = nueva === "completa" ? "completa" : "esencial";
-    document.documentElement.setAttribute("data-vista", vista);
-    try { localStorage.setItem("pt-vista", vista); } catch (e) {}
-    aplicarIdioma(lang);   // re-render entero: es barato y evita estados a medias
-  }
-
-  /* Botones «ver versión completa» repartidos por la página. El atributo es
-     data-ver y no data-vista porque data-vista vive en <html>: con closest()
-     cualquier clic de la página lo encontraría. */
-  function alCambiarVista(ev) {
-    var b = ev.target.closest("[data-ver]");
-    if (!b) return;
-    ev.preventDefault();
-    var destino = b.dataset.ir;
-    aplicarVista(b.dataset.ver);
-    if (destino && el(destino)) el(destino).scrollIntoView({ block: "start" });
-  }
-
-  function initVista() {
-    var guardada = null;
-    try { guardada = localStorage.getItem("pt-vista"); } catch (e) {}
-    var url = new URLSearchParams(location.search).get("vista");
-    var inicial = (url === "completa" || url === "esencial") ? url : (guardada || "esencial");
-
-    /* Un enlace directo a una sección que la vista esencial esconde abre la
-       completa: el link compartido tiene que llevar a donde promete. */
-    var ancla = (location.hash || "").slice(1);
-    var nodo  = ancla ? document.getElementById(ancla) : null;
-    if (nodo && nodo.classList.contains("solo-completa")) inicial = "completa";
-
-    vista = inicial === "completa" ? "completa" : "esencial";
-    document.documentElement.setAttribute("data-vista", vista);
-    /* Los dos segmentos llevan data-ver, así que los atiende el delegado
-       alCambiarVista junto con el resto de los botones de la página. */
   }
 
   function alCopiar(ev) {
@@ -634,7 +539,6 @@
     renderDocencia();
     renderBusco();
     renderContacto();
-    renderVistaMas();
     renderFooter();
     numerarSecciones();
 
@@ -662,15 +566,13 @@
   /* ========================================================= INIT */
   function init() {
     initTheme();
-    initVista();          // antes de initIdioma: el primer render ya sale con la vista puesta
     initIdioma();
     initReveal();
     initNav();
     document.addEventListener("click", alCopiar);
-    document.addEventListener("click", alCambiarVista);
 
-    /* Si el ancla apuntaba a una sección que estaba oculta al cargar, el
-       navegador no pudo saltar: ahora que está pintada, saltamos nosotros. */
+    /* El contenido lo pinta JS, así que al cargar con #ancla el navegador
+       todavía no tenía adónde saltar: ahora que está pintado, saltamos. */
     var ancla = (location.hash || "").slice(1);
     if (ancla && el(ancla)) el(ancla).scrollIntoView({ behavior: "auto", block: "start" });
   }

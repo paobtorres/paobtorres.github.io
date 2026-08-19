@@ -27,37 +27,19 @@ python3 -m http.server 4173
 
 Luego entrar a `http://localhost:4173`.
 
-## Las dos vistas
+## Estructura de la página
 
-La página arranca en **vista esencial**: seis secciones —Perfil, Actualidad,
-Proyectos de IA, Publicaciones, Colaboremos y Contacto— pensadas para quien
-llega a preguntar por proyectos actuales o líneas de investigación. El botón
-«Ver todo» de la barra superior abre la **vista completa**, que suma
-Trayectoria, Código abierto, Cursos y Docencia. La elección queda guardada en
-`localStorage` y también se puede forzar por URL: `?vista=completa`.
-
-Nada se borra: el HTML es siempre el mismo y la vista esencial esconde con CSS
-lo que está marcado con la clase `solo-completa`. Además de las cuatro
-secciones, hoy llevan esa marca los párrafos 3.º y 4.º del perfil, el panel de
-idiomas, la grilla de habilidades, los filtros de IA y de publicaciones y la
-nota de IA. Al revés, `solo-esencial` marca lo que sólo aparece en la vista
-corta (la franja «¿Querés el detalle completo?»).
-
-Dos secciones muestran menos en la vista esencial y por eso tienen subtítulo
-propio, la clave `sEsencial` en `ui.sec`: Proyectos de IA deja fuera las etapas
-planificadas y Publicaciones lista sólo los artículos.
-
-### Mover una sección de una vista a la otra
-
-1. Poné o sacá la clase `solo-completa` en el `<section>` de `index.html`. Con
-   eso alcanza: el menú, la numeración y el enlace por ancla la leen del DOM.
-2. Si la sección pasa a esconderse, sumá su `id` a la lista del script del
-   `<head>` de `index.html`. Esa lista no decide nada —`app.js` vuelve a
-   resolverlo leyendo las clases— pero evita el parpadeo cuando alguien entra
-   con un enlace directo a esa sección.
+Diez secciones, todas visibles: Perfil, Actualidad, Trayectoria, Proyectos de
+IA, Publicaciones, Código abierto, Cursos, Docencia, Colaboremos y Contacto.
 
 La numeración (`01`, `02`, …) y el alternado de fondos los calcula `app.js`
-sobre las secciones visibles, así que no hay que tocarlos.
+recorriendo las secciones del DOM, así que al agregar o sacar una no hay que
+renumerar nada a mano.
+
+El menú tampoco necesita ajustes: `ajustarNav()` mide si los enlaces entran en
+la barra y pasa a hamburguesa cuando no. Con diez secciones el margen es de
+unos 90 px en 1280, y el ancho real depende de la fuente del sistema de quien
+mira, así que si sumás secciones conviene mirar cómo queda la barra.
 
 ## Editar el contenido
 
@@ -80,7 +62,6 @@ Abrí `datos.js`. Es un único objeto `DATOS` con una sección por bloque de la 
 | `docencia`, `becarios`, `evaluacion` | Sección Docencia |
 | `busco`, `buscoIntro`, `buscoCta` | Sección «Colaboremos» |
 | `ui` | Textos de la interfaz: nav, títulos de sección, etiquetas, botones |
-| `ui.vista` | Textos del conmutador vista esencial ⇄ vista completa |
 | `perfiles` | ORCID y Google Scholar (hero y Publicaciones) |
 | `meta.actualizado` | Fecha del pie. Actualizala cuando toques contenido |
 | `contacto` | Bloque final |
@@ -171,12 +152,9 @@ y sumá una regla `.badge--<lo-que-sea>` en `styles.css`.
 1. Un `<section>` en `index.html` con `id`, `data-t` en el `<h2>` y `data-s` en el subtítulo.
 2. La entrada correspondiente en `ui.nav` y `ui.sec` de **ambos** archivos de datos.
 3. El render en `app.js` y su llamada dentro de `aplicarIdioma()`.
-4. Si va sólo en la vista completa, la clase `solo-completa`. Sin esa clase
-   aparece en las dos vistas.
 
-El menú no necesita ajustes: `ajustarNav()` mide si los enlaces entran y pasa a
-hamburguesa cuando no, así que soporta secciones nuevas y el cambio de idioma sin
-tocar breakpoints.
+Mirá cómo queda la barra después: con diez secciones los enlaces ya entran
+justos, y una más puede empujarla a modo hamburguesa en pantallas medianas.
 
 ## Publicarlo
 

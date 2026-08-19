@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-vista="esencial">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,7 @@
   <meta property="og:locale" content="es_AR">
   <meta name="twitter:card" content="summary">
 
-  <!-- Aplica tema, idioma y vista antes de pintar, para evitar parpadeos. -->
+  <!-- Aplica tema e idioma antes de pintar, para evitar parpadeos. -->
   <script>
     (function () {
       try {
@@ -30,18 +30,6 @@
         var l = p || localStorage.getItem("pt-lang") ||
                 ((navigator.language || "es").slice(0, 2) === "en" ? "en" : "es");
         document.documentElement.lang = (l === "en" ? "en" : "es");
-
-        /* La vista esencial es la de entrada: muestra lo que necesita quien
-           llega a preguntar por proyectos actuales o líneas de investigación.
-           Un enlace directo a una sección del detalle abre la vista completa.
-           El <html> ya viene con data-vista="esencial", así que si esto falla
-           no hay parpadeo: sólo no se recupera la preferencia guardada.
-           app.js repite la decisión leyendo las clases .solo-completa del DOM,
-           que son la fuente de verdad; esta lista es sólo para no parpadear. */
-        var v = q.get("vista") || localStorage.getItem("pt-vista") || "esencial";
-        var h = (location.hash || "").slice(1);
-        if (h && ["trayectoria", "codigo", "cursos", "docencia"].indexOf(h) !== -1) v = "completa";
-        document.documentElement.setAttribute("data-vista", v === "completa" ? "completa" : "esencial");
       } catch (e) {}
     })();
   </script>
@@ -64,10 +52,6 @@
     <nav class="nav__links" id="navLinks"></nav>
 
     <div class="nav__actions">
-      <div class="viewswitch" id="viewSwitch" role="group">
-        <button type="button" data-ver="esencial" id="viewSimple"></button>
-        <button type="button" data-ver="completa" id="viewFull"></button>
-      </div>
       <button class="langbtn" id="langToggle" type="button"></button>
       <button class="iconbtn" id="themeToggle" type="button">
         <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"/></svg>
@@ -141,10 +125,10 @@
         <div class="perfil__text" id="perfilText"></div>
         <div class="perfil__side">
           <div class="panel"><h3 class="panel__title" data-t="areas"></h3><ul class="taglist" id="perfilAreas"></ul></div>
-          <div class="panel solo-completa"><h3 class="panel__title" data-t="idiomas"></h3><ul class="kvlist" id="perfilIdiomas"></ul></div>
+          <div class="panel"><h3 class="panel__title" data-t="idiomas"></h3><ul class="kvlist" id="perfilIdiomas"></ul></div>
         </div>
       </div>
-      <div class="skills solo-completa" id="skills"></div>
+      <div class="skills" id="skills"></div>
     </div>
   </section>
 
@@ -157,7 +141,7 @@
   </section>
 
   <!-- ============ TRAYECTORIA ============ -->
-  <section class="section solo-completa" id="trayectoria">
+  <section class="section" id="trayectoria">
     <div class="wrap">
       <div class="sec-head"><span class="sec-num">03</span><h2 data-t="trayectoria"></h2><p class="sec-sub" data-s="trayectoria"></p></div>
       <div class="tray">
@@ -179,9 +163,9 @@
   <section class="section section--alt" id="ia">
     <div class="wrap">
       <div class="sec-head"><span class="sec-num">04</span><h2 data-t="ia"></h2><p class="sec-sub" data-s="ia"></p></div>
-      <div class="filters solo-completa" id="iaFilters" role="group"></div>
+      <div class="filters" id="iaFilters" role="group"></div>
       <div class="iagrid" id="iaGrid"></div>
-      <p class="note solo-completa" id="iaNote"></p>
+      <p class="note" id="iaNote"></p>
     </div>
   </section>
 
@@ -190,14 +174,13 @@
     <div class="wrap">
       <div class="sec-head"><span class="sec-num">05</span><h2 data-t="publicaciones"></h2><p class="sec-sub" data-s="publicaciones"></p></div>
       <div class="perfilesbar" id="pubPerfiles"></div>
-      <div class="filters solo-completa" id="pubFilters" role="group"></div>
+      <div class="filters" id="pubFilters" role="group"></div>
       <ol class="publist" id="pubList"></ol>
-      <div class="pubfoot" id="pubFoot"></div>
     </div>
   </section>
 
   <!-- ============ CÓDIGO ============ -->
-  <section class="section section--alt solo-completa" id="codigo">
+  <section class="section section--alt" id="codigo">
     <div class="wrap">
       <div class="sec-head"><span class="sec-num">06</span><h2 data-t="codigo"></h2><p class="sec-sub" data-s="codigo"></p></div>
       <div class="repogrid" id="repoGrid"></div>
@@ -206,7 +189,7 @@
   </section>
 
   <!-- ============ CURSOS ============ -->
-  <section class="section solo-completa" id="cursos">
+  <section class="section" id="cursos">
     <div class="wrap">
       <div class="sec-head"><span class="sec-num">07</span><h2 data-t="cursos"></h2><p class="sec-sub" data-s="cursos"></p></div>
       <div class="cursogrid" id="cursoGrid"></div>
@@ -215,7 +198,7 @@
   </section>
 
   <!-- ============ DOCENCIA ============ -->
-  <section class="section section--alt solo-completa" id="docencia">
+  <section class="section section--alt" id="docencia">
     <div class="wrap">
       <div class="sec-head"><span class="sec-num">08</span><h2 data-t="docencia"></h2><p class="sec-sub" data-s="docencia"></p></div>
       <div class="docgrid">
@@ -244,8 +227,6 @@
     </div>
   </section>
 
-  <!-- Puente hacia la vista completa; sólo aparece en la vista esencial. -->
-  <div class="vistamas solo-esencial" id="vistaMas"></div>
 
 </main>
 

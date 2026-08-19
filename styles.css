@@ -128,7 +128,9 @@ a:hover { text-decoration: underline; }
 .nav__links { margin-left: auto; display: flex; align-items: center; gap: 4px; }
 .nav__links a {
   color: var(--text-2); font-size: 14px; font-weight: 500;
-  padding: 7px 10px; border-radius: 999px;
+  /* 8px y no 10: con diez secciones los enlaces quedaban a ~50px de no entrar
+     en 1280, y el ancho real depende de la fuente del sistema de quien mira. */
+  padding: 7px 8px; border-radius: 999px;
   /* Sin nowrap, un enlace largo se parte en dos líneas y agranda el nav sin
      aumentar scrollWidth, con lo que la medición de ajustarNav() falla. */
   white-space: nowrap;
@@ -163,29 +165,6 @@ html[data-theme="light"] .iconbtn .ico-moon { display: block; }
   transition: color .18s, border-color .18s, transform .18s;
 }
 .langbtn:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
-
-/* Conmutador de vista: control segmentado de dos opciones. Se ven las dos a la
-   vez y se resalta la activa, así se entiende de un vistazo en cuál estás y
-   cuál es la otra. Un botón solo obligaba a adivinar si el texto nombraba el
-   estado actual o el destino. */
-.viewswitch {
-  height: 38px; display: flex; align-items: center; gap: 2px; padding: 3px;
-  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
-}
-.viewswitch button {
-  height: 100%; padding: 0 11px; border: 0; background: none;
-  /* El segmento activo se distingue por el relleno ámbar, no por atenuar el
-     texto del otro: --muted acá quedaba en 4.49:1 sobre --surface, apenas por
-     debajo de AA para 12,5 px. */
-  border-radius: 7px; color: var(--text-2); cursor: pointer;
-  font: 600 12.5px/1 var(--font); letter-spacing: .01em; white-space: nowrap;
-  transition: color .18s, background-color .18s;
-}
-.viewswitch button:hover { color: var(--text); }
-.viewswitch button[aria-pressed="true"] {
-  background: var(--accent); color: var(--accent-ink); cursor: default;
-}
-.viewswitch button[aria-pressed="true"]:hover { color: var(--accent-ink); }
 
 .nav__burger { display: none; }
 
@@ -557,9 +536,6 @@ html[data-theme="light"] .chip[aria-pressed="true"] { color: #fff; }
   color: var(--accent-2); background: color-mix(in srgb, var(--accent-2) 14%, transparent);
   border-radius: 999px; padding: 3px 9px;
 }
-.pubfoot { margin-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
-.pubfoot:empty { display: none; }
-.pubfoot .note { margin: 0; }
 
 /* Barra de perfiles arriba de las publicaciones */
 .perfilesbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 20px; }
@@ -710,27 +686,6 @@ a.contact__row:hover { text-decoration: none; border-color: var(--accent); trans
 .foot p { margin: 0; font-size: 13px; color: var(--muted); }
 .foot__upd { color: var(--text-2); font-weight: 600; }
 
-/* ------------------------------------------- VISTA ESENCIAL / COMPLETA */
-/* La vista esencial deja seis secciones: perfil, actualidad, investigación,
-   publicaciones, colaboremos y contacto. Todo lo demás sigue en el documento
-   —el HTML no cambia— y vuelve con el botón «Ver todo» de la barra superior. */
-html[data-vista="esencial"] .solo-completa { display: none !important; }
-html[data-vista="completa"] .solo-esencial { display: none !important; }
-
-/* Va pegada a Contacto, que también usa --bg-alt: sin el tinte ámbar las dos
-   franjas se leerían como un solo bloque. */
-.vistamas {
-  border-block: 1px solid color-mix(in srgb, var(--accent) 26%, var(--border));
-  background: color-mix(in srgb, var(--accent) 7%, var(--bg-alt));
-  padding: clamp(30px, 5vw, 46px) 0;
-}
-.vistamas__inner {
-  display: flex; flex-wrap: wrap; align-items: center;
-  justify-content: space-between; gap: 20px;
-}
-.vistamas h3 { font-size: 1.15rem; margin-bottom: 6px; letter-spacing: -.02em; }
-.vistamas p { font-size: 14px; color: var(--text-2); margin: 0; max-width: 62ch; }
-
 /* ------------------------------------------------------------- REVEAL */
 .reveal { opacity: 0; transform: translateY(16px); }
 .reveal.is-in { opacity: 1; transform: none; transition: opacity .55s var(--step), transform .55s var(--step); }
@@ -777,16 +732,13 @@ html[data-vista="completa"] .solo-esencial { display: none !important; }
   .hero__cta .btn { flex: 1 1 auto; justify-content: center; }
   .hero__perfiles a { flex: 1 1 auto; }
   .buscocta { flex-direction: column; align-items: flex-start; }
-  .vistamas__inner { flex-direction: column; align-items: flex-start; }
 }
 
-/* Con cuatro botones en la barra (vista, idioma, tema y menú) los teléfonos
+/* Con tres botones en la barra (idioma, tema y menú) los teléfonos
    más angostos se quedan sin lugar: se achica el aire, no el texto. */
 @media (max-width: 400px) {
   .nav__actions { gap: 6px; }
   .langbtn { padding: 0 10px; }
-  .viewswitch { padding: 2px; }
-  .viewswitch button { padding: 0 8px; }
 }
 
 /* ------------------------------------------------------------- A11Y / PRINT */
@@ -800,11 +752,8 @@ html[data-vista="completa"] .solo-esencial { display: none !important; }
 }
 
 @media print {
-  .nav, .hero__glow, .hero__motivo, .filters, .iconbtn, .langbtn, .copybtn,
-  .vistamas, .pubfoot { display: none !important; }
-  /* Se imprime la vista que está en pantalla, pero el texto del perfil va
-     entero: recortarlo en papel no ahorra nada. */
-  html[data-vista="esencial"] .perfil__text .solo-completa { display: revert !important; }
+  .nav, .hero__glow, .hero__motivo, .filters, .iconbtn, .langbtn,
+  .copybtn { display: none !important; }
   body { background: #fff; color: #000; }
   .section, .section--alt { background: #fff; border: 0; padding: 18px 0; }
   .hero__card, .panel, .nowcard, .iacard, .repocard, .curso, .busco, .contact { box-shadow: none; border: 1px solid #ddd; }

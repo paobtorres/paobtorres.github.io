@@ -22,10 +22,8 @@ const DATOS_EN = {
       perfil:        { t: "About",              s: "Who I am and what I work on" },
       actualidad:    { t: "Right now",          s: "What I am working on today" },
       trayectoria:   { t: "Background",         s: "Experience and academic training" },
-      ia:            { t: "AI projects",        s: "Ongoing lines and 2025–2028 roadmap",
-                       sEsencial: "The research lines I have under way" },
-      publicaciones: { t: "Publications",       s: "Peer-reviewed articles, plus book chapters and conferences",
-                       sEsencial: "Peer-reviewed articles" },
+      ia:            { t: "AI projects",        s: "Ongoing lines and 2025–2028 roadmap" },
+      publicaciones: { t: "Publications",       s: "Peer-reviewed articles, plus book chapters and conferences" },
       codigo:        { t: "Open source",        s: "Repositories and scientific software" },
       cursos:        { t: "Courses I teach",    s: "Training and graduate courses, with open materials" },
       docencia:      { t: "Academic teaching",  s: "Undergraduate courses, student supervision and peer review" },
@@ -39,18 +37,6 @@ const DATOS_EN = {
       becarios: "Student supervision",
       evaluacion: "Peer review",
       verRepo: "View repository", verPerfil: "View full profile"
-    },
-    vista: {
-      grupo:         "Level of detail",
-      botonEsencial: "Short",
-      botonCompleta: "Full",
-      aCompleta:  "See the full version of the site",
-      aEsencial:  "Back to the short version",
-      masTitulo:  "Want the full detail?",
-      masTexto:   "The full version adds background and education, open-source repositories, the courses I teach and undergraduate teaching.",
-      masBoton:   "See full version",
-      verTodas:   "See all publications",
-      soloArticulos: "Only peer-reviewed articles are listed."
     },
     actualizado: "Last updated"
   },

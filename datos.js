@@ -22,12 +22,8 @@ const DATOS_ES = {
       perfil:        { t: "Perfil",               s: "Quién soy y en qué trabajo" },
       actualidad:    { t: "Actualidad",           s: "En qué estoy trabajando hoy" },
       trayectoria:   { t: "Trayectoria",          s: "Experiencia y formación académica" },
-      /* `sEsencial`: subtítulo alternativo para la vista esencial, que de
-         estas dos secciones muestra sólo una parte. */
-      ia:            { t: "Proyectos de IA",      s: "Líneas en curso y hoja de ruta 2025–2028",
-                       sEsencial: "Las líneas de investigación que tengo en curso" },
-      publicaciones: { t: "Publicaciones",        s: "Artículos revisados por pares, más capítulos y congresos",
-                       sEsencial: "Artículos revisados por pares" },
+      ia:            { t: "Proyectos de IA",      s: "Líneas en curso y hoja de ruta 2025–2028" },
+      publicaciones: { t: "Publicaciones",        s: "Artículos revisados por pares, más capítulos y congresos" },
       codigo:        { t: "Código abierto",       s: "Repositorios y software científico" },
       cursos:        { t: "Cursos que dicto",     s: "Capacitaciones y cursos de posgrado, con su material abierto" },
       docencia:      { t: "Docencia y formación", s: "Cátedras de grado, dirección de becarios y evaluación" },
@@ -41,21 +37,6 @@ const DATOS_ES = {
       becarios: "Dirección de becarios y tesistas",
       evaluacion: "Evaluación científico-técnica",
       verRepo: "Ver repositorio", verPerfil: "Ver perfil completo"
-    },
-    /* Textos del conmutador vista esencial ⇄ vista completa. */
-    vista: {
-      /* Etiquetas de los dos segmentos: cortas y paralelas, porque se leen
-         una al lado de la otra. La frase larga va en el title. */
-      grupo:         "Nivel de detalle",
-      botonEsencial: "Simple",
-      botonCompleta: "Completa",
-      aCompleta:  "Ver la versión completa del sitio",
-      aEsencial:  "Volver a la versión resumida",
-      masTitulo:  "¿Querés el detalle completo?",
-      masTexto:   "La versión completa suma trayectoria y formación, repositorios de código abierto, los cursos que dicto y la docencia de grado.",
-      masBoton:   "Ver versión completa",
-      verTodas:   "Ver todas las publicaciones",
-      soloArticulos: "Se listan sólo los artículos revisados por pares."
     },
     actualizado: "Última actualización"
   },
