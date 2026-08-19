@@ -94,11 +94,20 @@
     lb.setAttribute("aria-label", u.cambiarIdioma);
     lb.setAttribute("title", u.cambiarIdioma);
 
-    var vb = el("viewToggle");
-    vb.textContent = esEsencial() ? u.vista.botonCompleta : u.vista.botonEsencial;
-    vb.setAttribute("aria-label", esEsencial() ? u.vista.aCompleta : u.vista.aEsencial);
-    vb.setAttribute("title", esEsencial() ? u.vista.aCompleta : u.vista.aEsencial);
-    vb.setAttribute("aria-pressed", String(!esEsencial()));
+    /* Conmutador de vista: dos segmentos siempre visibles, con el actual
+       marcado. Antes era un botón solo que mostraba el destino ("Ver todo"
+       estando en la vista simple), y se leía al revés: parecía la etiqueta de
+       dónde estabas y no adónde ibas. Mostrando las dos opciones no hay
+       ambigüedad posible. */
+    el("viewSwitch").setAttribute("aria-label", u.vista.grupo);
+    [["viewSimple", "esencial"], ["viewFull", "completa"]].forEach(function (par) {
+      var b = el(par[0]), activo = (vista === par[1]);
+      var esencial = par[1] === "esencial";
+      b.textContent = esencial ? u.vista.botonEsencial : u.vista.botonCompleta;
+      b.setAttribute("title", esencial ? u.vista.aEsencial : u.vista.aCompleta);
+      b.setAttribute("aria-label", esencial ? u.vista.aEsencial : u.vista.aCompleta);
+      b.setAttribute("aria-pressed", String(activo));
+    });
 
     el("themeToggle").setAttribute("aria-label", u.tema);
     el("themeToggle").setAttribute("title", u.tema);
@@ -447,10 +456,8 @@
 
     vista = inicial === "completa" ? "completa" : "esencial";
     document.documentElement.setAttribute("data-vista", vista);
-
-    el("viewToggle").addEventListener("click", function () {
-      aplicarVista(esEsencial() ? "completa" : "esencial");
-    });
+    /* Los dos segmentos llevan data-ver, así que los atiende el delegado
+       alCambiarVista junto con el resto de los botones de la página. */
   }
 
   function alCopiar(ev) {

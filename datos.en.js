@@ -41,8 +41,9 @@ const DATOS_EN = {
       verRepo: "View repository", verPerfil: "View full profile"
     },
     vista: {
-      botonCompleta: "See all",
-      botonEsencial: "Simple view",
+      grupo:         "Level of detail",
+      botonEsencial: "Short",
+      botonCompleta: "Full",
       aCompleta:  "See the full version of the site",
       aEsencial:  "Back to the short version",
       masTitulo:  "Want the full detail?",
@@ -71,7 +72,7 @@ const DATOS_EN = {
     email: "paotorres89@gmail.com",
     telefono: "+54 9 260 430-5636",
     telefonoLink: "tel:+5492604305636",
-    actualizado: "2026-08-17",
+    actualizado: "2026-08-19",
     foto: null,
     fotoAlt: "Portrait of Paola Beatriz Torres"
   },

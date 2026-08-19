@@ -44,8 +44,11 @@ const DATOS_ES = {
     },
     /* Textos del conmutador vista esencial ⇄ vista completa. */
     vista: {
-      botonCompleta: "Ver todo",
-      botonEsencial: "Vista simple",
+      /* Etiquetas de los dos segmentos: cortas y paralelas, porque se leen
+         una al lado de la otra. La frase larga va en el title. */
+      grupo:         "Nivel de detalle",
+      botonEsencial: "Simple",
+      botonCompleta: "Completa",
       aCompleta:  "Ver la versión completa del sitio",
       aEsencial:  "Volver a la versión resumida",
       masTitulo:  "¿Querés el detalle completo?",
@@ -77,7 +80,7 @@ const DATOS_ES = {
     telefonoLink: "tel:+5492604305636",
 
     /* Fecha de última actualización del sitio (formato ISO AAAA-MM-DD). */
-    actualizado: "2026-08-17",
+    actualizado: "2026-08-19",
 
     /* Foto: dejalo en null o poné "foto.jpg" (cuadrada, ~400 px). */
     foto: null,
