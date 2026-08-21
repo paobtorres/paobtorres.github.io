@@ -178,6 +178,26 @@ entra igual en Netlify, Vercel o Cloudflare Pages arrastrando la carpeta.
 Para usar un dominio propio: agregar un archivo `CNAME` con el dominio adentro y
 apuntar el DNS a GitHub. No hay que tocar el código.
 
+## Buscadores y compartir el enlace
+
+- `og.png` (1200×630) es la tarjeta que se ve al pegar el link en LinkedIn,
+  WhatsApp o X. Se genera abriendo `og.source.html` en el navegador y sacándole
+  una captura de 1200×630; si cambia tu nombre o tu cargo hay que regenerarla,
+  porque el texto está quemado en la imagen. Las etiquetas `og:image`, `og:url`
+  y `canonical` de `index.html` usan URLs absolutas: los scrapers de las redes
+  no resuelven rutas relativas.
+- El bloque `application/ld+json` de `index.html` describe quién sos para los
+  buscadores (cargo, afiliación, ORCID, Scholar). **Tiene que coincidir con
+  `datos.js`**: si cambiás el cargo en uno, cambialo en el otro. No se genera
+  solo, es HTML estático.
+- `robots.txt` y `sitemap.xml` están en la raíz. El `<lastmod>` del sitemap se
+  actualiza a mano junto con `meta.actualizado`.
+
+Una limitación a tener en cuenta: el idioma se cambia en el cliente sobre una
+sola URL, así que los buscadores indexan la versión en español. Para que la
+inglesa se indexe aparte harían falta URLs distintas (por ejemplo `/en/`), que
+es un cambio de estructura, no una etiqueta más.
+
 ## Datos personales
 
 El repositorio es **público**. Los tres PDFs del CV están en `.gitignore` y no se

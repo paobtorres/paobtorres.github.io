@@ -124,7 +124,10 @@
     var t = D.tarjeta;
     el("heroCard").innerHTML =
       (m.foto ? '<img class="hero__avatar" src="' + esc(m.foto) + '" alt="' + esc(m.fotoAlt || m.nombre) + '">' : "") +
-      "<h3>" + esc(t.titulo) + "</h3><dl>" +
+      /* h2 y no h3: es el primer encabezado después del h1 del hero, y saltarse
+         un nivel desordena la lectura con lector de pantalla. El tamaño lo pone
+         el CSS, no la etiqueta. */
+      "<h2>" + esc(t.titulo) + "</h2><dl>" +
       t.filas.map(function (f) {
         return '<div class="row"><dt>' + esc(f.k) + "</dt><dd>" + f.v + "</dd></div>";
       }).join("") + "</dl>";

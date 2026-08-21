@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://paobtorres.github.io/sitemap.xml
