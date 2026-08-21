@@ -15,8 +15,7 @@ const DATOS_ES = {
     nav: {
       perfil: "Perfil", actualidad: "Actualidad", trayectoria: "Trayectoria",
       ia: "Proyectos de IA", publicaciones: "Publicaciones", codigo: "Código",
-      cursos: "Cursos", docencia: "Docencia", colaborar: "Colaboremos",
-      contacto: "Contacto"
+      cursos: "Cursos", docencia: "Docencia", colaborar: "Colaboremos"
     },
     sec: {
       perfil:        { t: "Perfil",               s: "Quién soy y en qué trabajo" },
@@ -27,8 +26,7 @@ const DATOS_ES = {
       codigo:        { t: "Código abierto",       s: "Repositorios y software científico" },
       cursos:        { t: "Cursos que dicto",     s: "Capacitaciones y cursos de posgrado, con su material abierto" },
       docencia:      { t: "Docencia y formación", s: "Cátedras de grado, dirección de becarios y evaluación" },
-      colaborar:     { t: "Colaboremos",          s: "Colaboraciones académicas, consultoría y trabajo freelance" },
-      contacto:      { t: "Contacto",             s: "Escribime y coordinamos" }
+      colaborar:     { t: "Colaboremos",          s: "En qué puedo sumar, y cómo escribirme" }
     },
     lbl: {
       areas: "Áreas de trabajo", idiomas: "Idiomas",
@@ -36,7 +34,8 @@ const DATOS_ES = {
       becas: "Becas y distinciones", catedras: "Cátedras de grado",
       becarios: "Dirección de becarios y tesistas",
       evaluacion: "Evaluación científico-técnica",
-      verRepo: "Ver repositorio", verPerfil: "Ver perfil completo"
+      verRepo: "Ver repositorio", verPerfil: "Ver perfil completo",
+      heroCta: "Trabajemos juntos"
     },
     actualizado: "Última actualización"
   },
@@ -61,7 +60,7 @@ const DATOS_ES = {
     telefonoLink: "tel:+5492604305636",
 
     /* Fecha de última actualización del sitio (formato ISO AAAA-MM-DD). */
-    actualizado: "2026-08-19",
+    actualizado: "2026-08-20",
 
     /* Foto: dejalo en null o poné "foto.jpg" (cuadrada, ~400 px). */
     foto: null,
@@ -449,23 +448,18 @@ const DATOS_ES = {
       desc: "Cursos y talleres para universidades, grupos de investigación e institutos: Git para científicos, Python científico, simulación molecular. Adapto duración y nivel al grupo.",
       modalidad: "Virtual o presencial" }
   ],
-  buscoCta: {
+  /* Cierre de «Colaboremos». No repite lo que ya dicen las cuatro tarjetas de
+     arriba: va directo a qué hacer ahora. ORCID y Scholar no se repiten acá,
+     ya están en el encabezado y en Publicaciones. */
+  contacto: {
     titulo: "¿Tenés un proyecto en mente?",
     texto: "Contame qué necesitás y te digo con franqueza si puedo ayudarte, en qué plazos y de qué manera. Si no es lo mío, te oriento hacia quien pueda.",
-    boton: "Escribime"
-  },
-
-  /* -------------------------------------------------------------- CONTACTO */
-  contacto: {
-    titulo: "Trabajemos juntos",
-    texto: "Me interesan colaboraciones en simulación de materia blanda, proyectos de ciencia de datos y machine learning aplicado, trabajo freelance y propuestas de docencia. Escribime y respondo a la brevedad.",
+    boton: "Escribime",
     items: [
       { tipo: "email",    label: "Email",     valor: "paotorres89@gmail.com", href: "mailto:paotorres89@gmail.com" },
       { tipo: "tel",      label: "Teléfono",  valor: "+54 9 260 430-5636",    href: "tel:+5492604305636" },
       { tipo: "linkedin", label: "LinkedIn",  valor: "in/paolabtorres",       href: "https://www.linkedin.com/in/paolabtorres/" },
       { tipo: "github",   label: "GitHub",    valor: "paobtorres",            href: "https://github.com/paobtorres" },
-      { tipo: "orcid",    label: "ORCID",     valor: "0000-0001-9335-8367",   href: "https://orcid.org/0000-0001-9335-8367" },
-      { tipo: "scholar",  label: "Scholar",   valor: "Google Scholar",        href: "https://scholar.google.com/citations?user=IGoJvPAAAAAJ&hl=es" },
       { tipo: "lugar",    label: "Ubicación", valor: "San Rafael, Mendoza, Argentina" }
     ]
   },

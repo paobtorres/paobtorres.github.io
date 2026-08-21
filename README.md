@@ -29,17 +29,22 @@ Luego entrar a `http://localhost:4173`.
 
 ## Estructura de la página
 
-Diez secciones, todas visibles: Perfil, Actualidad, Trayectoria, Proyectos de
-IA, Publicaciones, Código abierto, Cursos, Docencia, Colaboremos y Contacto.
+Nueve secciones, todas visibles: Perfil, Actualidad, Trayectoria, Proyectos de
+IA, Publicaciones, Código abierto, Cursos, Docencia y Colaboremos.
+
+«Colaboremos» cierra la página y absorbió lo que antes era una sección Contacto
+aparte: las dos terminaban con su propio «escribime» y decían casi lo mismo.
+Ahora es un solo recorrido —en qué puedo sumar, después cómo escribirme— con un
+único llamado a la acción.
 
 La numeración (`01`, `02`, …) y el alternado de fondos los calcula `app.js`
 recorriendo las secciones del DOM, así que al agregar o sacar una no hay que
 renumerar nada a mano.
 
 El menú tampoco necesita ajustes: `ajustarNav()` mide si los enlaces entran en
-la barra y pasa a hamburguesa cuando no. Con diez secciones el margen es de
-unos 90 px en 1280, y el ancho real depende de la fuente del sistema de quien
-mira, así que si sumás secciones conviene mirar cómo queda la barra.
+la barra y pasa a hamburguesa cuando no. Con nueve secciones hay margen
+holgado, pero el ancho real depende de la fuente del sistema de quien mira, así
+que si sumás secciones conviene mirar cómo queda la barra.
 
 ## Editar el contenido
 
@@ -60,11 +65,11 @@ Abrí `datos.js`. Es un único objeto `DATOS` con una sección por bloque de la 
 | `experiencia`, `formacion`, `becas` | Líneas de tiempo de Trayectoria |
 | `cursos` | Sección «Cursos que dicto» |
 | `docencia`, `becarios`, `evaluacion` | Sección Docencia |
-| `busco`, `buscoIntro`, `buscoCta` | Sección «Colaboremos» |
+| `busco`, `buscoIntro` | Tarjetas de «Colaboremos» |
 | `ui` | Textos de la interfaz: nav, títulos de sección, etiquetas, botones |
 | `perfiles` | ORCID y Google Scholar (hero y Publicaciones) |
 | `meta.actualizado` | Fecha del pie. Actualizala cuando toques contenido |
-| `contacto` | Bloque final |
+| `contacto` | Cierre de «Colaboremos»: título, texto, botón y datos de contacto |
 
 Guardás, recargás el navegador y listo. No hay que tocar el HTML.
 
@@ -153,8 +158,8 @@ y sumá una regla `.badge--<lo-que-sea>` en `styles.css`.
 2. La entrada correspondiente en `ui.nav` y `ui.sec` de **ambos** archivos de datos.
 3. El render en `app.js` y su llamada dentro de `aplicarIdioma()`.
 
-Mirá cómo queda la barra después: con diez secciones los enlaces ya entran
-justos, y una más puede empujarla a modo hamburguesa en pantallas medianas.
+Mirá cómo queda la barra después: los enlaces entran, pero el margen no es
+enorme y depende de la fuente del sistema.
 
 ## Publicarlo
 

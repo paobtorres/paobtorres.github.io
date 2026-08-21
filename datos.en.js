@@ -15,8 +15,7 @@ const DATOS_EN = {
     nav: {
       perfil: "About", actualidad: "Now", trayectoria: "Background",
       ia: "AI projects", publicaciones: "Publications", codigo: "Code",
-      cursos: "Teaching", docencia: "Academia", colaborar: "Work with me",
-      contacto: "Contact"
+      cursos: "Teaching", docencia: "Academia", colaborar: "Work with me"
     },
     sec: {
       perfil:        { t: "About",              s: "Who I am and what I work on" },
@@ -27,8 +26,7 @@ const DATOS_EN = {
       codigo:        { t: "Open source",        s: "Repositories and scientific software" },
       cursos:        { t: "Courses I teach",    s: "Training and graduate courses, with open materials" },
       docencia:      { t: "Academic teaching",  s: "Undergraduate courses, student supervision and peer review" },
-      colaborar:     { t: "Work with me",       s: "Academic collaboration, consulting and freelance work" },
-      contacto:      { t: "Contact",            s: "Get in touch and let's talk" }
+      colaborar:     { t: "Work with me",       s: "How I can help, and how to reach me" }
     },
     lbl: {
       areas: "Areas of work", idiomas: "Languages",
@@ -36,7 +34,8 @@ const DATOS_EN = {
       becas: "Fellowships and awards", catedras: "Undergraduate courses",
       becarios: "Student supervision",
       evaluacion: "Peer review",
-      verRepo: "View repository", verPerfil: "View full profile"
+      verRepo: "View repository", verPerfil: "View full profile",
+      heroCta: "Let's work together"
     },
     actualizado: "Last updated"
   },
@@ -58,7 +57,7 @@ const DATOS_EN = {
     email: "paotorres89@gmail.com",
     telefono: "+54 9 260 430-5636",
     telefonoLink: "tel:+5492604305636",
-    actualizado: "2026-08-19",
+    actualizado: "2026-08-20",
     foto: null,
     fotoAlt: "Portrait of Paola Beatriz Torres"
   },
@@ -414,22 +413,15 @@ const DATOS_EN = {
       desc: "Courses and workshops for universities, research groups and institutes: Git for scientists, scientific Python, molecular simulation. I adapt length and level to the audience.",
       modalidad: "Online or in person" }
   ],
-  buscoCta: {
+  contacto: {
     titulo: "Got a project in mind?",
     texto: "Tell me what you need and I'll be straight with you about whether I can help, on what timeline and in what form. If it isn't my field, I'll point you to someone who can.",
-    boton: "Get in touch"
-  },
-
-  contacto: {
-    titulo: "Let's work together",
-    texto: "I am interested in collaborations on soft matter simulation, data science and applied machine learning projects, freelance work and teaching proposals. Write to me and I'll reply promptly.",
+    boton: "Get in touch",
     items: [
       { tipo: "email",    label: "Email",    valor: "paotorres89@gmail.com", href: "mailto:paotorres89@gmail.com" },
       { tipo: "tel",      label: "Phone",    valor: "+54 9 260 430-5636",    href: "tel:+5492604305636" },
       { tipo: "linkedin", label: "LinkedIn", valor: "in/paolabtorres",       href: "https://www.linkedin.com/in/paolabtorres/" },
       { tipo: "github",   label: "GitHub",   valor: "paobtorres",            href: "https://github.com/paobtorres" },
-      { tipo: "orcid",    label: "ORCID",    valor: "0000-0001-9335-8367",   href: "https://orcid.org/0000-0001-9335-8367" },
-      { tipo: "scholar",  label: "Scholar",  valor: "Google Scholar",        href: "https://scholar.google.com/citations?user=IGoJvPAAAAAJ&hl=en" },
       { tipo: "lugar",    label: "Location", valor: "San Rafael, Mendoza, Argentina" }
     ]
   },

@@ -111,7 +111,7 @@
     el("heroLede").textContent = m.lede;
 
     el("heroCta").innerHTML =
-      '<a class="btn btn--primary" href="#contacto">' + ICON.mail + " " + esc(D.contacto.titulo) + "</a>" +
+      '<a class="btn btn--primary" href="#colaborar">' + ICON.mail + " " + esc(D.ui.lbl.heroCta) + "</a>" +
       '<a class="btn" href="' + esc(L.github) + '" target="_blank" rel="noopener">' + ICON.github + " GitHub</a>" +
       '<a class="btn" href="' + esc(L.linkedin) + '" target="_blank" rel="noopener">' + ICON.linkedin + " LinkedIn</a>";
 
@@ -323,11 +323,6 @@
         "<h3>" + esc(b.titulo) + "</h3><p>" + esc(b.desc) + "</p>" +
         '<span class="busco__mod">' + esc(b.modalidad) + "</span></article>";
     }).join("");
-
-    var c = D.buscoCta;
-    el("buscoCta").innerHTML =
-      "<div><h3>" + esc(c.titulo) + "</h3><p>" + esc(c.texto) + "</p></div>" +
-      '<a class="btn btn--primary" href="mailto:' + esc(D.meta.email) + '">' + ICON.mail + " " + esc(c.boton) + "</a>";
   }
 
   /* ==================================================== CONTACTO */
@@ -348,7 +343,7 @@
 
     el("contact").innerHTML =
       "<div><h3>" + esc(c.titulo) + "</h3><p>" + esc(c.texto) + "</p>" +
-      '<a class="btn btn--primary" href="mailto:' + esc(D.meta.email) + '">' + ICON.mail + " " + esc(D.buscoCta.boton) + "</a></div>" +
+      '<a class="btn btn--primary" href="mailto:' + esc(D.meta.email) + '">' + ICON.mail + " " + esc(c.boton) + "</a></div>" +
       '<div class="contact__list">' + filas + "</div>";
   }
 
