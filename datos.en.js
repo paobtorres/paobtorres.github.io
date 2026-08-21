@@ -57,7 +57,7 @@ const DATOS_EN = {
     email: "paotorres89@gmail.com",
     telefono: "+54 9 260 430-5636",
     telefonoLink: "tel:+5492604305636",
-    actualizado: "2026-08-20",
+    actualizado: "2026-08-21",
     foto: null,
     fotoAlt: "Portrait of Paola Beatriz Torres"
   },

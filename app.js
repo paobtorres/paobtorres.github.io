@@ -350,16 +350,12 @@
       '<div class="contact__list">' + filas + "</div>";
   }
 
-  /* Numera las secciones y alterna el fondo. Se calcula acá y no se deja fijo
-     en el HTML para no tener que renumerar a mano al agregar o sacar una. */
-  function numerarSecciones() {
+  /* Alterna el fondo de las secciones. Se calcula acá y no se deja fijo en el
+     HTML para que al agregar o sacar una no queden dos fondos iguales pegados. */
+  function alternarFondos() {
     Array.prototype.forEach.call(
       document.querySelectorAll("main > section:not(.hero)"),
-      function (s, i) {
-        var n = s.querySelector(".sec-num");
-        if (n) n.textContent = (i < 9 ? "0" : "") + (i + 1);
-        s.classList.toggle("section--alt", i % 2 === 1);
-      }
+      function (s, i) { s.classList.toggle("section--alt", i % 2 === 1); }
     );
   }
 
@@ -538,7 +534,7 @@
     renderBusco();
     renderContacto();
     renderFooter();
-    numerarSecciones();
+    alternarFondos();
 
     if (revealListo) { if (io) observarNuevos(document); else mostrarTodo(document); }
     if (navListo) ajustarNav();   // los enlaces cambian de ancho al traducirse

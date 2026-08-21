@@ -60,7 +60,7 @@ const DATOS_ES = {
     telefonoLink: "tel:+5492604305636",
 
     /* Fecha de última actualización del sitio (formato ISO AAAA-MM-DD). */
-    actualizado: "2026-08-20",
+    actualizado: "2026-08-21",
 
     /* Foto: dejalo en null o poné "foto.jpg" (cuadrada, ~400 px). */
     foto: null,

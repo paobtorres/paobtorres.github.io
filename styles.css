@@ -322,10 +322,6 @@ html[data-theme="light"] .btn--primary { color: #fff; }
 .section--alt > .wrap { position: relative; }
 
 .sec-head { margin-bottom: clamp(28px, 4vw, 44px); }
-.sec-num {
-  display: block; font-family: var(--mono); font-size: 12px;
-  color: var(--accent); letter-spacing: .16em; margin-bottom: 8px;
-}
 .sec-head h2 { font-size: clamp(1.7rem, 3.6vw, 2.35rem); letter-spacing: -.03em; }
 .sec-sub { color: var(--muted); margin: 8px 0 0; font-size: 15px; }
 
