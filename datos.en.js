@@ -12,6 +12,7 @@ const DATOS_EN = {
     saltar: "Skip to content",
     tema: "Toggle theme", menu: "Open menu", menuCerrar: "Close menu",
     copiar: "Copy", copiado: "Copied!",
+    navAria: "Sections",
     nav: {
       perfil: "About", actualidad: "Now", trayectoria: "Background",
       ia: "AI projects", publicaciones: "Publications", codigo: "Code",

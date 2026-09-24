@@ -37,9 +37,8 @@ aparte: las dos terminaban con su propio «escribime» y decían casi lo mismo.
 Ahora es un solo recorrido —en qué puedo sumar, después cómo escribirme— con un
 único llamado a la acción.
 
-La numeración (`01`, `02`, …) y el alternado de fondos los calcula `app.js`
-recorriendo las secciones del DOM, así que al agregar o sacar una no hay que
-renumerar nada a mano.
+El alternado de fondos lo calcula `app.js` recorriendo las secciones del DOM,
+así que al agregar o sacar una no quedan dos fondos iguales pegados.
 
 El menú tampoco necesita ajustes: `ajustarNav()` mide si los enlaces entran en
 la barra y pasa a hamburguesa cuando no. Con nueve secciones hay margen
@@ -59,17 +58,18 @@ Abrí `datos.js`. Es un único objeto `DATOS` con una sección por bloque de la 
 | `perfil` | Párrafos, áreas de trabajo, idiomas |
 | `skills` | Grupos de habilidades técnicas |
 | `actualidad` | Tarjetas "En qué estoy trabajando hoy" |
-| `ia` / `iaEstados` | Proyectos de IA y las etiquetas del filtro |
+| `ia` / `iaEstados` / `iaNota` | Proyectos de IA, las etiquetas del filtro y la nota al pie |
 | `publicaciones` / `pubTipos` / `pubTodas` | Listado de publicaciones y filtros |
-| `repos` | Tarjetas de repositorios de GitHub |
+| `repos` / `repoNota` | Tarjetas de repositorios de GitHub y la nota al pie |
 | `experiencia`, `formacion`, `becas` | Líneas de tiempo de Trayectoria |
-| `cursos` | Sección «Cursos que dicto» |
+| `cursos` / `cursoNota` | Sección «Cursos que dicto» y su nota al pie |
 | `docencia`, `becarios`, `evaluacion` | Sección Docencia |
 | `busco`, `buscoIntro` | Tarjetas de «Colaboremos» |
 | `ui` | Textos de la interfaz: nav, títulos de sección, etiquetas, botones |
 | `perfiles` | ORCID y Google Scholar (hero y Publicaciones) |
 | `meta.actualizado` | Fecha del pie. Actualizala cuando toques contenido |
 | `contacto` | Cierre de «Colaboremos»: título, texto, botón y datos de contacto |
+| `pie` | Texto de la derecha del pie de página |
 
 Guardás, recargás el navegador y listo. No hay que tocar el HTML.
 

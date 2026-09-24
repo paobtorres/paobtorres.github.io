@@ -12,6 +12,7 @@ const DATOS_ES = {
     saltar: "Saltar al contenido",
     tema: "Cambiar tema", menu: "Abrir menú", menuCerrar: "Cerrar menú",
     copiar: "Copiar", copiado: "¡Copiado!",
+    navAria: "Secciones",
     nav: {
       perfil: "Perfil", actualidad: "Actualidad", trayectoria: "Trayectoria",
       ia: "Proyectos de IA", publicaciones: "Publicaciones", codigo: "Código",
@@ -253,7 +254,7 @@ const DATOS_ES = {
       fuente: "IX IDETEC — Congreso de Investigaciones y Desarrollos en Tecnologías y Ciencia", id: "ISBN 978-987-4998-69-9" },
     { tipo: "Congresos", anio: 2021, autores: "<b>Torres, P. B.</b>; Baldor, S.; Quiroga, E.; Ramirez-Pastor, A. J.; Boeris, V.; Narambuena, C. F.",
       titulo: "Interacción de α-lactoalbúmina con cadenas de polielectrolitos de diversa naturaleza",
-      fuente: "XXII CAFQI — Congreso Argentino de Fisicoquímica e Química Inorgánica · Virtual" },
+      fuente: "XXII CAFQI — Congreso Argentino de Fisicoquímica y Química Inorgánica · Virtual" },
     { tipo: "Congresos", anio: 2021, autores: "<b>Torres, P. B.</b>; Baldor, S.; Quiroga, E.; Ramirez-Pastor, A. J.; Boeris, V.; Narambuena, C. F.",
       titulo: "Interacción de α-lactoalbúmina con cadenas de polielectrolitos de diversa naturaleza",
       fuente: "TREFEMAC XVIII — Congreso Regional de Física Estadística y Aplicaciones a la Materia Condensada · Virtual" },

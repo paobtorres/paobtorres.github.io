@@ -69,7 +69,7 @@
     el("skipLink").textContent = u.saltar;
     el("brandText").textContent = D.meta.nombreCorto;
 
-    el("navLinks").setAttribute("aria-label", u.nav.perfil + " …");
+    el("navLinks").setAttribute("aria-label", u.navAria);
     el("navLinks").innerHTML = Object.keys(u.nav).map(function (k) {
       return '<a href="#' + k + '">' + esc(u.nav[k]) + "</a>";
     }).join("");
@@ -81,7 +81,10 @@
 
     el("themeToggle").setAttribute("aria-label", u.tema);
     el("themeToggle").setAttribute("title", u.tema);
-    el("navBurger").setAttribute("aria-label", u.menu);
+    var abierto = el("navLinks").classList.contains("is-open");
+    el("navBurger").setAttribute("aria-label", abierto ? u.menuCerrar : u.menu);
+    el("iaFilters").setAttribute("aria-label", u.sec.ia.t);
+    el("pubFilters").setAttribute("aria-label", u.sec.publicaciones.t);
 
     Array.prototype.forEach.call(document.querySelectorAll("[data-t]"), function (n) {
       var k = n.dataset.t;
@@ -287,7 +290,6 @@
 
   /* ====================================================== CURSOS */
   function renderCursos() {
-    var proximo = D.cursos.length && D.cursos[0].estado;   // referencia de idioma
     el("cursoGrid").innerHTML = D.cursos.map(function (c) {
       var esProx = /Próximo|Upcoming/i.test(c.estado);
       var meta = [c.institucion, c.anio, c.horas, c.modalidad].filter(Boolean).map(esc).join(" · ");
@@ -305,7 +307,6 @@
           : "") + "</article>";
     }).join("");
     el("cursoNota").innerHTML = D.cursoNota;
-    void proximo;
   }
 
   /* ==================================================== DOCENCIA */
@@ -332,16 +333,20 @@
   function renderContacto() {
     var c = D.contacto;
     var filas = c.items.map(function (i) {
-      var tag  = i.href ? "a" : "div";
       var attr = i.href
         ? ' href="' + esc(i.href) + '"' + (/^https?:/.test(i.href) ? ' target="_blank" rel="noopener"' : "")
         : "";
-      var copy = (i.tipo === "email" || i.tipo === "tel")
-        ? '<button class="copybtn" type="button" data-copy="' + esc(i.valor) + '">' + esc(D.ui.copiar) + "</button>"
-        : "";
-      return "<" + tag + ' class="contact__row"' + attr + ">" + (ICON[i.tipo] || ICON.link) +
-        '<span class="contact__txt"><b>' + esc(i.label) + "</b><span>" + esc(i.valor) + "</span></span>" +
-        copy + "</" + tag + ">";
+      var cuerpo = (ICON[i.tipo] || ICON.link) +
+        '<span class="contact__txt"><b>' + esc(i.label) + "</b><span>" + esc(i.valor) + "</span></span>";
+      /* Con botón «Copiar» la fila es un <div> con el enlace adentro y el botón
+         al lado: un <button> dentro de un <a> es HTML inválido. */
+      if (i.href && (i.tipo === "email" || i.tipo === "tel")) {
+        return '<div class="contact__row"><a class="contact__link"' + attr + ">" + cuerpo + "</a>" +
+          '<button class="copybtn" type="button" data-copy="' + esc(i.valor) + '">' + esc(D.ui.copiar) + "</button></div>";
+      }
+      return i.href
+        ? '<a class="contact__row"' + attr + ">" + cuerpo + "</a>"
+        : '<div class="contact__row">' + cuerpo + "</div>";
     }).join("");
 
     el("contact").innerHTML =
@@ -373,7 +378,7 @@
     } else {
       var ta = document.createElement("textarea");
       ta.value = b.dataset.copy; document.body.appendChild(ta); ta.select();
-      try { document.execCommand("copy"); ok(); } catch (e) {}
+      try { if (document.execCommand("copy")) ok(); } catch (e) {}
       document.body.removeChild(ta);
     }
   }
@@ -387,7 +392,7 @@
 
     /* Sin el tratamiento delante: «Ph.D. in Engineering Paola Torres» no es
        una forma válida de nombrar a alguien en inglés. */
-    el("footLeft").innerHTML = "&copy; " + f.getFullYear() + " " +
+    el("footLeft").innerHTML = "&copy; " + (isNaN(f) ? new Date() : f).getFullYear() + " " +
       esc(D.meta.nombre) + " · San Rafael, Mendoza, Argentina";
     el("footRight").innerHTML =
       '<span class="foot__upd">' + esc(D.ui.actualizado) + ": " + esc(fecha) + "</span><br>" + esc(D.pie);
@@ -445,7 +450,16 @@
     if (necesario > disponible) {
       nav.classList.add("is-compact");
       if (abierto) links.classList.add("is-open");
+    } else if (abierto) {
+      cerrarMenu();   // pasó a barra horizontal: el botón ya no se ve
     }
+  }
+
+  function cerrarMenu() {
+    var burger = el("navBurger");
+    el("navLinks").classList.remove("is-open");
+    burger.setAttribute("aria-expanded", "false");
+    burger.setAttribute("aria-label", D.ui.menu);
   }
 
   function initNav() {
@@ -465,9 +479,13 @@
     });
 
     links.addEventListener("click", function (ev) {
-      if (ev.target.tagName === "A") {
-        links.classList.remove("is-open");
-        burger.setAttribute("aria-expanded", "false");
+      if (ev.target.closest("a")) cerrarMenu();
+    });
+
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape" && links.classList.contains("is-open")) {
+        cerrarMenu();
+        burger.focus();
       }
     });
 
@@ -519,7 +537,6 @@
     if (!IDIOMAS[nuevo]) nuevo = "es";
     lang = nuevo;
     D = IDIOMAS[nuevo];
-    filtroIA = 0; filtroPub = 0;
 
     renderChrome();
     renderHero();
