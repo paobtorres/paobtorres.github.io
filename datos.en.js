@@ -133,7 +133,7 @@ const DATOS_EN = {
       detalle: "Researcher on a project studying intrinsically disordered peptides by combining atomistic molecular dynamics, coarse-grained models fitted through machine learning, and constant-pH Monte Carlo." },
     { etiqueta: "Teaching", titulo: "Teaching Assistant — Basic Sciences",
       lugar: "Facultad Regional San Rafael, UTN", periodo: "2018 – present",
-      detalle: "Calculus, Algebra and Analytic Geometry, Dynamical Systems I. Course materials published in open repositories." },
+      detalle: "Calculus, Algebra and Analytic Geometry, Dynamical Systems I." },
     { etiqueta: "Open source", titulo: "Developer on pyMBE",
       lugar: "the Python-based Molecule Builder for ESPResSo", periodo: "Oct 2022 – present",
       detalle: "Refactored the library on top of Pandas to improve particle bookkeeping and traceability, and extended the builder to create globular proteins." }
@@ -383,7 +383,7 @@ const DATOS_EN = {
   ],
 
   becarios: [
-    "<b>Facundo Laureano Martinez</b> · ongoing · Master's thesis, M.Sc. in Data Science, Universidad Nacional Arturo Jauretche",
+    "<b>Facundo Laureano Martínez</b> · ongoing · Master's thesis, M.Sc. in Data Science, Universidad Nacional Arturo Jauretche",
     "<b>Romina Mellado</b> · 2020–2021 · Bionanotechnology and Complex Systems Group",
     "<b>Silvina López</b> · 2019–2020 · Undergraduate research fellowship, UTN FRSR",
     "<b>Emmanuel A. Luengo</b> · 2018 · Undergraduate research fellowship, UTN FRSR"

@@ -152,7 +152,7 @@ const DATOS_ES = {
       titulo: "Ayudante de Primera — Ciencias Básicas",
       lugar: "Facultad Regional San Rafael, UTN",
       periodo: "2018 – presente",
-      detalle: "Análisis Matemático, Álgebra y Geometría Analítica, Sistemas Dinámicos I. Material de cátedra publicado en repositorios abiertos."
+      detalle: "Análisis Matemático, Álgebra y Geometría Analítica, Sistemas Dinámicos I."
     },
     {
       etiqueta: "Open source",
@@ -417,7 +417,7 @@ const DATOS_ES = {
   ],
 
   becarios: [
-    "<b>Facundo Laureano Martinez</b> · en curso · Tesis de Maestría en Ciencia de Datos, Universidad Nacional Arturo Jauretche",
+    "<b>Facundo Laureano Martínez</b> · en curso · Tesis de Maestría en Ciencia de Datos, Universidad Nacional Arturo Jauretche",
     "<b>Romina Mellado</b> · 2020–2021 · Grupo Vinculado Bionanotecnología y Sistemas Complejos",
     "<b>Silvina López</b> · 2019–2020 · Beca de iniciación a la investigación, UTN FRSR",
     "<b>Emmanuel A. Luengo</b> · 2018 · Beca de iniciación a la investigación, UTN FRSR"
