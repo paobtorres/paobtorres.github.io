@@ -12,6 +12,7 @@ const DATOS_ES = {
     saltar: "Saltar al contenido",
     tema: "Cambiar tema", menu: "Abrir menú", menuCerrar: "Cerrar menú",
     copiar: "Copiar", copiado: "¡Copiado!",
+    navAria: "Secciones",
     nav: {
       perfil: "Perfil", actualidad: "Actualidad", trayectoria: "Trayectoria",
       ia: "Proyectos de IA", publicaciones: "Publicaciones", codigo: "Código",
@@ -60,7 +61,7 @@ const DATOS_ES = {
     telefonoLink: "tel:+5492604305636",
 
     /* Fecha de última actualización del sitio (formato ISO AAAA-MM-DD). */
-    actualizado: "2026-08-21",
+    actualizado: "2026-09-24",
 
     /* Foto: dejalo en null o poné "foto.jpg" (cuadrada, ~400 px). */
     foto: null,
@@ -85,7 +86,7 @@ const DATOS_ES = {
     { valor: "8",    label: "artículos indexados" },
     { valor: "1",    label: "capítulo de libro" },
     { valor: "28",   label: "trabajos en congresos" },
-    { valor: "2018", label: "docente desde" }
+    { valor: "2017", label: "docente desde" }
   ],
 
   tarjeta: {
@@ -106,7 +107,7 @@ const DATOS_ES = {
       "Soy Ingeniera Química y Doctora en Ingeniería. Mi trabajo consiste en <strong>traducir preguntas fisicoquímicas a modelos computacionales</strong>: cómo se comporta una proteína cuando cambia el pH, por qué forma un complejo con una cadena de polielectrolito, o qué condiciones hacen que un péptido se adsorba sobre un sustrato cargado.",
       "Para responderlas escribo simulaciones de <strong>Monte Carlo a pH constante</strong> y de <strong>dinámica molecular</strong>, construyo <strong>modelos de grano grueso</strong> y proceso los resultados con Python. En los últimos años sumé <strong>aprendizaje automático</strong> a ese flujo de trabajo: para predecir observables costosos de simular, para transferir información entre escalas de modelado y para análisis de imágenes.",
       "Ese cruce entre ciencia de materiales blandos y ciencia de datos es el eje de mi etapa actual: un proyecto 2025&ndash;2028 sobre glicomacropéptidos de caseína donde el aprendizaje automático es la pieza que conecta la simulación atomística con los modelos de grano grueso.",
-      "También me dedico a la docencia desde 2018 &mdash;matemática de grado, cursos de posgrado en modelado molecular y un curso de Git para principiantes&mdash; y a dirigir becarios y tesistas."
+      "También me dedico a la docencia desde 2017 &mdash;matemática de grado, cursos de posgrado en modelado molecular y un curso de Git para principiantes&mdash; y a dirigir becarios y tesistas."
     ],
     areas: [
       "Simulación computacional", "Monte Carlo a pH constante", "Dinámica molecular",
@@ -151,7 +152,7 @@ const DATOS_ES = {
       titulo: "Ayudante de Primera — Ciencias Básicas",
       lugar: "Facultad Regional San Rafael, UTN",
       periodo: "2018 – presente",
-      detalle: "Análisis Matemático, Álgebra y Geometría Analítica, Sistemas Dinámicos I. Material de cátedra publicado en repositorios abiertos."
+      detalle: "Análisis Matemático, Álgebra y Geometría Analítica, Sistemas Dinámicos I."
     },
     {
       etiqueta: "Open source",
@@ -253,7 +254,7 @@ const DATOS_ES = {
       fuente: "IX IDETEC — Congreso de Investigaciones y Desarrollos en Tecnologías y Ciencia", id: "ISBN 978-987-4998-69-9" },
     { tipo: "Congresos", anio: 2021, autores: "<b>Torres, P. B.</b>; Baldor, S.; Quiroga, E.; Ramirez-Pastor, A. J.; Boeris, V.; Narambuena, C. F.",
       titulo: "Interacción de α-lactoalbúmina con cadenas de polielectrolitos de diversa naturaleza",
-      fuente: "XXII CAFQI — Congreso Argentino de Fisicoquímica e Química Inorgánica · Virtual" },
+      fuente: "XXII CAFQI — Congreso Argentino de Fisicoquímica y Química Inorgánica · Virtual" },
     { tipo: "Congresos", anio: 2021, autores: "<b>Torres, P. B.</b>; Baldor, S.; Quiroga, E.; Ramirez-Pastor, A. J.; Boeris, V.; Narambuena, C. F.",
       titulo: "Interacción de α-lactoalbúmina con cadenas de polielectrolitos de diversa naturaleza",
       fuente: "TREFEMAC XVIII — Congreso Regional de Física Estadística y Aplicaciones a la Materia Condensada · Virtual" },
@@ -321,7 +322,7 @@ const DATOS_ES = {
 
   /* ---------------------------------------------------------- REPOSITORIOS */
   repos: [
-    { nombre: "pyMBE", url: "https://github.com/paobtorres/pyMBE", lang: "Python", destacado: true,
+    { nombre: "pyMBE", url: "https://github.com/pyMBE-dev/pyMBE", lang: "Python", destacado: true,
       desc: "the Python-based Molecule Builder for ESPResSo. Librería para construir moléculas de arquitectura compleja en simulaciones de dinámica molecular. Aporté la refactorización sobre Pandas y la creación de proteínas globulares.",
       tags: ["Simulación", "ESPResSo", "Pandas", "Publicado en J. Chem. Phys."] },
     { nombre: "curso_git_essentials", url: "https://github.com/paobtorres/curso_git_essentials", lang: "Markdown", estrellas: 21,
@@ -335,10 +336,7 @@ const DATOS_ES = {
       tags: ["Data Science", "EDA", "Machine Learning"] },
     { nombre: "imagenes_radar", url: "https://github.com/paobtorres/imagenes_radar", lang: "HTML",
       desc: "Carga automática de imágenes: pipeline de ingesta y preprocesamiento para el trabajo de análisis de imágenes con redes convolucionales.",
-      tags: ["Automatización", "Imágenes", "Pipeline"] },
-    { nombre: "sistemas_dinamicos_I", url: "https://github.com/paobtorres/sistemas_dinamicos_I", lang: "Python", estrellas: 2,
-      desc: "Notebooks y recursos de la cátedra Sistemas Dinámicos I (Álgebra y Geometría Analítica) en UTN FRSR.",
-      tags: ["Docencia", "Matemática"] }
+      tags: ["Automatización", "Imágenes", "Pipeline"] }
   ],
   repoNota: "Perfil completo y actividad reciente en <a href='https://github.com/paobtorres' target='_blank' rel='noopener'>github.com/paobtorres</a>.",
 
@@ -355,7 +353,7 @@ const DATOS_ES = {
                "Desarrollo de código Python para visualización y gestión de datos de simulación.",
                "Refactorización colaborativa de pyMBE dentro del ecosistema ESPResSo.",
                "Supervisión: Prof. Dr. Peter Košovan."] },
-    { periodo: "2018 – Jul 2024", rol: "Becaria Doctoral CONICET",
+    { periodo: "2018 – Jul 2024", rol: "Becaria doctoral (UTN 2018–2021 · CONICET 2021–2024)",
       org: "Grupo Vinculado Bionanotecnología y Sistemas Complejos, UTN – UNSL – CONICET", lugar: "San Rafael, Mendoza",
       puntos: ["Modelos de grano grueso de proteínas globulares dentro del software ESPResSo.",
                "Simulación de proteínas y polielectrolitos con el algoritmo de Monte Carlo.",
@@ -395,7 +393,7 @@ const DATOS_ES = {
   /* ---------------------------------------------------------------- CURSOS */
   cursos: [
     { estado: "Dictado", titulo: "Git Essentials — curso básico para principiantes", rol: "Profesora a cargo",
-      institucion: "Facultad Regional San Rafael, UTN", anio: "2023 · edición 2026 en preparación",
+      institucion: "Facultad Regional San Rafael, UTN", anio: "2023 · 2026",
       horas: "10 h", modalidad: "Presencial",
       descripcion: "Introducción práctica al control de versiones para quienes nunca usaron Git: repositorios locales, commits, ramas, resolución de conflictos y trabajo colaborativo en remoto. Pensado para estudiantes y docentes de ingeniería que escriben código científico.",
       temas: ["Control de versiones", "Ramas y merge", "GitHub", "Flujo colaborativo"],
@@ -419,7 +417,7 @@ const DATOS_ES = {
   ],
 
   becarios: [
-    "<b>Dirección de tesis de maestría</b> — Maestría en Ciencia de Datos · en curso",
+    "<b>Facundo Laureano Martínez</b> · en curso · Tesis de Maestría en Ciencia de Datos, Universidad Nacional Arturo Jauretche",
     "<b>Romina Mellado</b> · 2020–2021 · Grupo Vinculado Bionanotecnología y Sistemas Complejos",
     "<b>Silvina López</b> · 2019–2020 · Beca de iniciación a la investigación, UTN FRSR",
     "<b>Emmanuel A. Luengo</b> · 2018 · Beca de iniciación a la investigación, UTN FRSR"

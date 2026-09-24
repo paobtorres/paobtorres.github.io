@@ -12,10 +12,11 @@ const DATOS_EN = {
     saltar: "Skip to content",
     tema: "Toggle theme", menu: "Open menu", menuCerrar: "Close menu",
     copiar: "Copy", copiado: "Copied!",
+    navAria: "Sections",
     nav: {
       perfil: "About", actualidad: "Now", trayectoria: "Background",
       ia: "AI projects", publicaciones: "Publications", codigo: "Code",
-      cursos: "Teaching", docencia: "Academia", colaborar: "Work with me"
+      cursos: "Courses", docencia: "Teaching", colaborar: "Work with me"
     },
     sec: {
       perfil:        { t: "About",              s: "Who I am and what I work on" },
@@ -57,7 +58,7 @@ const DATOS_EN = {
     email: "paotorres89@gmail.com",
     telefono: "+54 9 260 430-5636",
     telefonoLink: "tel:+5492604305636",
-    actualizado: "2026-08-21",
+    actualizado: "2026-09-24",
     foto: null,
     fotoAlt: "Portrait of Paola Beatriz Torres"
   },
@@ -78,7 +79,7 @@ const DATOS_EN = {
     { valor: "8",    label: "indexed articles" },
     { valor: "1",    label: "book chapter" },
     { valor: "28",   label: "conference contributions" },
-    { valor: "2018", label: "teaching since" }
+    { valor: "2017", label: "teaching since" }
   ],
 
   tarjeta: {
@@ -98,7 +99,7 @@ const DATOS_EN = {
       "I am a Chemical Engineer and hold a Ph.D. in Engineering. My work is about <strong>turning physicochemical questions into computational models</strong>: how a protein behaves when pH changes, why it forms a complex with a polyelectrolyte chain, or which conditions make a peptide adsorb onto a charged substrate.",
       "To answer those questions I write <strong>constant-pH Monte Carlo</strong> and <strong>molecular dynamics</strong> simulations, build <strong>coarse-grained models</strong> and process the results with Python. In recent years I added <strong>machine learning</strong> to that workflow: to predict observables that are expensive to simulate, to transfer information across modelling scales, and for image analysis.",
       "That intersection between soft matter science and data science is the core of my current stage: a 2025&ndash;2028 project on casein glycomacropeptides where machine learning is the piece connecting atomistic simulation with coarse-grained models.",
-      "I have also been teaching since 2018 &mdash;undergraduate mathematics, graduate courses on molecular modelling and an introductory Git course&mdash; and supervising research students."
+      "I have also been teaching since 2017 &mdash;undergraduate mathematics, graduate courses on molecular modelling and an introductory Git course&mdash; and supervising research students."
     ],
     areas: [
       "Computational simulation", "Constant-pH Monte Carlo", "Molecular dynamics",
@@ -132,7 +133,7 @@ const DATOS_EN = {
       detalle: "Researcher on a project studying intrinsically disordered peptides by combining atomistic molecular dynamics, coarse-grained models fitted through machine learning, and constant-pH Monte Carlo." },
     { etiqueta: "Teaching", titulo: "Teaching Assistant — Basic Sciences",
       lugar: "Facultad Regional San Rafael, UTN", periodo: "2018 – present",
-      detalle: "Calculus, Algebra and Analytic Geometry, Dynamical Systems I. Course materials published in open repositories." },
+      detalle: "Calculus, Algebra and Analytic Geometry, Dynamical Systems I." },
     { etiqueta: "Open source", titulo: "Developer on pyMBE",
       lugar: "the Python-based Molecule Builder for ESPResSo", periodo: "Oct 2022 – present",
       detalle: "Refactored the library on top of Pandas to improve particle bookkeeping and traceability, and extended the builder to create globular proteins." }
@@ -290,7 +291,7 @@ const DATOS_EN = {
   ],
 
   repos: [
-    { nombre: "pyMBE", url: "https://github.com/paobtorres/pyMBE", lang: "Python", destacado: true,
+    { nombre: "pyMBE", url: "https://github.com/pyMBE-dev/pyMBE", lang: "Python", destacado: true,
       desc: "the Python-based Molecule Builder for ESPResSo. A library for building molecules with complex architectures in molecular dynamics simulations. I contributed the Pandas-based refactor and globular protein creation.",
       tags: ["Simulation", "ESPResSo", "Pandas", "Published in J. Chem. Phys."] },
     { nombre: "curso_git_essentials", url: "https://github.com/paobtorres/curso_git_essentials", lang: "Markdown", estrellas: 21,
@@ -304,10 +305,7 @@ const DATOS_EN = {
       tags: ["Data Science", "EDA", "Machine Learning"] },
     { nombre: "imagenes_radar", url: "https://github.com/paobtorres/imagenes_radar", lang: "HTML",
       desc: "Automated image loading: ingestion and preprocessing pipeline for the convolutional image analysis work.",
-      tags: ["Automation", "Imaging", "Pipeline"] },
-    { nombre: "sistemas_dinamicos_I", url: "https://github.com/paobtorres/sistemas_dinamicos_I", lang: "Python", estrellas: 2,
-      desc: "Notebooks and resources for the Dynamical Systems I course (Algebra and Analytic Geometry) at UTN FRSR.",
-      tags: ["Teaching", "Mathematics"] }
+      tags: ["Automation", "Imaging", "Pipeline"] }
   ],
   repoNota: "Full profile and recent activity at <a href='https://github.com/paobtorres' target='_blank' rel='noopener'>github.com/paobtorres</a>.",
 
@@ -323,7 +321,7 @@ const DATOS_EN = {
                "Python code for visualisation and management of simulation data.",
                "Collaborative refactoring of pyMBE within the ESPResSo ecosystem.",
                "Supervisor: Prof. Peter Košovan."] },
-    { periodo: "2018 – Jul 2024", rol: "CONICET Doctoral Fellow",
+    { periodo: "2018 – Jul 2024", rol: "Doctoral Fellow (UTN 2018–2021 · CONICET 2021–2024)",
       org: "Bionanotechnology and Complex Systems Group, UTN – UNSL – CONICET", lugar: "San Rafael, Mendoza",
       puntos: ["Coarse-grained models of globular proteins within the ESPResSo software.",
                "Simulation of proteins and polyelectrolytes using the Monte Carlo algorithm.",
@@ -362,7 +360,7 @@ const DATOS_EN = {
 
   cursos: [
     { estado: "Taught", titulo: "Git Essentials — a beginners course", rol: "Lead instructor",
-      institucion: "Facultad Regional San Rafael, UTN", anio: "2023 · 2026 edition in preparation",
+      institucion: "Facultad Regional San Rafael, UTN", anio: "2023 · 2026",
       horas: "10 h", modalidad: "In person",
       descripcion: "A hands-on introduction to version control for people who have never used Git: local repositories, commits, branches, conflict resolution and collaborative remote work. Aimed at engineering students and lecturers who write scientific code.",
       temas: ["Version control", "Branching and merging", "GitHub", "Collaborative workflow"],
@@ -385,7 +383,7 @@ const DATOS_EN = {
   ],
 
   becarios: [
-    "<b>Master's thesis supervision</b> — M.Sc. in Data Science · ongoing",
+    "<b>Facundo Laureano Martínez</b> · ongoing · Master's thesis, M.Sc. in Data Science, Universidad Nacional Arturo Jauretche",
     "<b>Romina Mellado</b> · 2020–2021 · Bionanotechnology and Complex Systems Group",
     "<b>Silvina López</b> · 2019–2020 · Undergraduate research fellowship, UTN FRSR",
     "<b>Emmanuel A. Luengo</b> · 2018 · Undergraduate research fellowship, UTN FRSR"
